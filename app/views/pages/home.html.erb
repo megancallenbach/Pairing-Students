@@ -1,1 +1,6 @@
-<h1>Pairing Students</h1>
+<% if current_user.admin? %>
+  <%= render "admins/admin_homepage" %>
+
+<% else %>
+  <%= render "students/student_homepage" %>
+<% end %>
