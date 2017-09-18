@@ -1,5 +1,9 @@
 <h1>User Index</h1>
 
 <% @users.each do |user| %>
+  <% if user.profile.nil? %>
+    <%= user.email %>
+  <% else %>
   <p><%= user.full_name %></p>
+  <% end %>
 <% end %>
