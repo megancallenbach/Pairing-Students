@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def full_name
     profile.full_name
   end
+
+  def set_admin
+    update admin: true
+  end
 end
