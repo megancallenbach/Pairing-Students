@@ -3,10 +3,11 @@ class PairsController < ApplicationController
 
   def index
     @pairs = Pair.all
+    @today_pairs = Pair.create_pairs_today
   end
 
   def show
-    
+
   end
 
   def create
