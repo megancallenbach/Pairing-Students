@@ -1,4 +1,4 @@
 class Pair < ApplicationRecord
-  has_many :students
-  has_and_belongs_to_many :admins
+  has_many :users
+
 end
