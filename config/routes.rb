@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   #   resources :students
   # end
   resources :pairs
+  resources :profiles, only: [:new, :edit, :create, :update]
 end
