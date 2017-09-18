@@ -1,6 +1,8 @@
 class PairsController < ApplicationController
+  before_action :authorize_admin, only: :index
 
   def index
+    @pairs = Pair.all
   end
 
   def show
@@ -9,5 +11,5 @@ class PairsController < ApplicationController
   def create
   end
 
-  
+
 end
