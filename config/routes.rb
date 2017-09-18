@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: "pairs#index"
+
+  root to: 'pages#home'
 
   devise_for :users do
     resources :admins
