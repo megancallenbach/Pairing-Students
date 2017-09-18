@@ -15,13 +15,13 @@ class Pair < ApplicationRecord
 
 			@lonely_students.delete(user2)
 
-			pair1 = [user1, user2]
+			@pair = [user1, user2]
 
-			if @history.include? pair1 || pair1.reverse
+			if @history.include? @pair || @pair.reverse
 				@lonely_students.push(user1, user2)
 			else
-				@today_pairs.push(pair1)
-				@history.push(pair1)
+				@today_pairs.push(@pair)
+				@history.push(@pair)
 			end
 
 		end
