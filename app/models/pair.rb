@@ -1,6 +1,13 @@
 class Pair < ApplicationRecord
   has_many :users
 
+  def create_pair
+    @lonely_students = [@user.email]
+
+    pair = Pair.new
+
+  end
+
   def create_pairs_today
 		@history = []
 		@lonely_students = ["Megan", "Mimi", "Bob", "Charles", "Lila", "Lola"]
@@ -15,6 +22,7 @@ class Pair < ApplicationRecord
 
 			@lonely_students.delete(user2)
 
+      @pair = Pair.create!
 			@pair = [user1, user2]
 
 			if @history.include? @pair || @pair.reverse

@@ -8,3 +8,10 @@
 
 
 admin1 = User.create(email: "admin@pairingstudents.com", password: "12345678", admin: true)
+
+student1 = User.create(email: "student1@pairingstudents.com", password: "12345678", admin: false)
+student2 = User.create(email: "student2@pairingstudents.com", password: "12345678", admin: false)
+student3 = User.create(email: "student3@pairingstudents.com", password: "12345678", admin: false)
+student4 = User.create(email: "student4@pairingstudents.com", password: "12345678", admin: false)
+student5 = User.create(email: "student5@pairingstudents.com", password: "12345678", admin: false)
+student6 = User.create(email: "student6@pairingstudents.com", password: "12345678", admin: false)
