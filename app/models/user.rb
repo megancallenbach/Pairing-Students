@@ -1,9 +1,10 @@
 class User < ApplicationRecord
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_one :pair
+  belongs_to :pair, optional: true
   has_one :profile
 
   def has_profile?
@@ -15,6 +16,8 @@ class User < ApplicationRecord
   end
 
   def set_admin
-    update admin: true
+  update admin: true
   end
+
+  
 end

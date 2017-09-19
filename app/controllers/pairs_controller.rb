@@ -4,8 +4,6 @@ class PairsController < ApplicationController
   def index
     @pairs = Pair.all
     @pair = Pair.new
-    @users = User.all
-
   end
 
   def show
@@ -13,7 +11,6 @@ class PairsController < ApplicationController
   end
 
   def create
-    @pair = Pair.new
   end
 
 

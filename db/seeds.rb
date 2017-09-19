@@ -9,9 +9,10 @@
 User.destroy_all
 Pair.destroy_all
 
-admin1 = User.create(email: "admin@pairingstudents.com", password: "12345678", admin: true)
-
 pair1 = Pair.create!()
+
+admin1 = User.create(email: "admin@pairingstudents.com", password: "12345678", admin: true, pair: pair1)
+admin2 = User.create(email: "admin@admin.com", password: "1234567", admin: true, pair: pair1)
 
 student1 = User.create!(email: "student1@student.com", password: "123456", admin: false, pair: pair1)
 student2 = User.create!(email: "student2@student.com", password: "123456", admin: false, pair: pair1)

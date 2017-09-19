@@ -2,10 +2,27 @@ class Pair < ApplicationRecord
   has_many :users
 
 
+  def lonely_students
+
+  end
+
   def create_pairs_today
 		@history = []
-		@lonely_students = ["Megan", "Mimi", "Bob", "Charles", "Lila", "Lola"]
 		@today_pairs = []
+    #pairs = Pair.all
+  #  @lonely_students = pairs.each{|pair| pair.lonely_students}
+
+    users = User.all
+    @lonely_students = []
+
+    users.each do |user|
+      if user.profile.nil?
+        @lonely_students.push(user.email)
+      else
+        @lonely_students.push(user.full_name)
+      end
+    end
+
 		while @lonely_students.length > 1
 
 			user1 = @lonely_students[rand(0..((@lonely_students.length) - 1))]
@@ -28,4 +45,5 @@ class Pair < ApplicationRecord
 		end
     return @today_pairs
 	end
+
 end
