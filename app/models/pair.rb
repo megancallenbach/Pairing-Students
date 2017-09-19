@@ -9,9 +9,6 @@ class Pair < ApplicationRecord
   def create_pairs_today
 		@history = []
 		@today_pairs = []
-    #pairs = Pair.all
-  #  @lonely_students = pairs.each{|pair| pair.lonely_students}
-
     users = User.all
     @lonely_students = []
 
