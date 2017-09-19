@@ -1,7 +1,8 @@
 <h1>This will be the pair index</h1>
+<h3>Pairs today</h3>
+<p><%= @pair.create_pairs_today %></p>
 
-<%= @pair.create_pairs_today %>
-
+<h3>All pairs so far:</h3>
 <% @pairs.each do |pair| %>
-<%= pair %>
+<p><%= pair %></p>
 <%end%>

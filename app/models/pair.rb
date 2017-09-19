@@ -13,11 +13,7 @@ class Pair < ApplicationRecord
     @lonely_students = []
 
     users.each do |user|
-      if user.profile.nil?
-        @lonely_students.push(user.email)
-      else
         @lonely_students.push(user.full_name)
-      end
     end
 
 		while @lonely_students.length > 1
