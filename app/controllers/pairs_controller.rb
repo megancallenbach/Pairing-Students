@@ -3,14 +3,19 @@ class PairsController < ApplicationController
 
   def index
     @pairs = Pair.all
+    @pair = Pair.first
     @users = User.all
   end
 
   def show
     @pair = Pair.find(current_user.pair_id)
-    @users = @pair.users
+    @match = @pair.users
   end
 
+  def create
+    @pairs = Pair.all
+    Pair.create_pairs
+  end
 
   def new
     @pair = Pair.new
