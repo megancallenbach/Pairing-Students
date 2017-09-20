@@ -41,4 +41,5 @@ class Pair < ApplicationRecord
     end
     return @@pairs_today
   end
+
 end

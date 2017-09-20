@@ -1,9 +1,14 @@
 <h1>Today's Pairs are:</h1>
+<div class="wrapper">
+
 
 <% @users.where(admin: false).each do |user| %>
+<div class="col-sm-6">
+<p> Student's Name: <%= user.full_name %></p>
+<p> Pair Number: <%= user.pair_id %></p>
+<hr />
+</div>
 
-<p> Username: <%= user.full_name %></p>
-<p> Pair Id: <%= user.pair_id %></p>
 <% end %>
-
+</div>
 <%= link_to "Generate New Matches", new_pair_path, class: "btn btn-large btn-primary" %>
