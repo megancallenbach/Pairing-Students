@@ -1,10 +1,14 @@
 <h1>This will be the pair index</h1>
-<% @pair.create_pairs %>
+
 <% @users.where(admin: false).each do |user| %>
 
 <p> Username: <%= user.full_name %></p>
 <p> Pair Id: <%= user.pair_id %></p>
 <% end %>
 
-<%= @pair.student1 %>
-
+<<<<<<< HEAD
+<%= @pairs.each do |pair| %>
+<p><%= pair.student1 %> <%pair.student2%></p>
+=======
+<%= link_to "Generate New Matches", new_pair_path, class: "btn btn-large btn-primary" %>
+>>>>>>> af81a2f6e895e6a390d8abc38a309b9a69693a6c
