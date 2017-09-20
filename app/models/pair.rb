@@ -8,7 +8,7 @@ class Pair < ApplicationRecord
   end
   @@pairs_today = []
 
-  def create_pairs
+  def self.create_pairs
     i = 0
 
     puts "Lonely: #{@@lonely_students}"
