@@ -15,11 +15,7 @@ class PairsController < ApplicationController
   def create
     @pairs = Pair.all
     Pair.create_pairs
+    redirect_to pairs_path, notice: "New Pairs Created!"
   end
 
-  def new
-    @pair = Pair.new
-    @users = User.all
-    @pairs = Pair.all
-  end
 end
