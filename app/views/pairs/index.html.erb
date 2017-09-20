@@ -1,3 +1,9 @@
 <h1>This will be the pair index</h1>
+<% @pair.create_pairs %>
+<% @users.where(admin: false).each do |user| %>
 
-<%= @pair.create_pairs_today %>
+<p> Username: <%= user.full_name %></p>
+<p> Pair Id: <%= user.pair_id %></p>
+<% end %>
+
+<%= @pair.student1 %>
