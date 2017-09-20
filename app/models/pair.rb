@@ -11,6 +11,7 @@ class Pair < ApplicationRecord
       @lonely_students.push(user.full_name)
     end
 
+
     while @lonely_students.length > 1
       @history = []
       @today_pairs = []
@@ -21,6 +22,7 @@ class Pair < ApplicationRecord
       first_name1 = user1.split(' ')[0]
       last_name1 = user1.split(' ')[1]
       # User.find_by(User.full_name: user1)
+
 
       user_1 = User.find_by(first_name: first_name1, last_name: last_name1)
       user_1.update(pair_id: @pair.id)
