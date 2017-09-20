@@ -15,5 +15,5 @@ class User < ApplicationRecord
   update admin: true
   end
 
-
+  
 end

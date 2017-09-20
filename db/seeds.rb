@@ -7,9 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-Pair.destroy_all
-
-pair1 = Pair.create!()
 
 admin1 = User.create(first_name: "admin", last_name: "one", email: "admin@pairingstudents.com", password: "12345678", admin: true)
 admin2 = User.create(first_name: "admin", last_name: "two", email: "admin@admin.com", password: "1234567", admin: true)
