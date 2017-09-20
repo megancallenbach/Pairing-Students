@@ -3,7 +3,8 @@ class PairsController < ApplicationController
 
   def index
     @pairs = Pair.all
-    @pair = Pair.new
+    #@pair = Pair.new
+    @users = User.all
   end
 
   def show
