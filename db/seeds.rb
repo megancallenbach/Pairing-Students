@@ -20,3 +20,7 @@ student3 = User.create(first_name: Faker::Name.first_name, last_name: "Three", e
 student4 = User.create(first_name: Faker::Name.first_name, last_name: "Four", email: "student4@student.com", password: "123456", admin: false)
 student5 = User.create(first_name: Faker::Name.first_name, last_name: "Five", email: "student5@student.com", password: "123456", admin: false)
 student6 = User.create(first_name: Faker::Name.first_name, last_name: "Six", email: "student6@student.com", password: "123456", admin: false)
+student7 = User.create(first_name: Faker::Name.first_name, last_name: "Seven", email: "student7@student.com", password: "123456", admin: false)
+student8 = User.create(first_name: Faker::Name.first_name, last_name: "Eight", email: "student8@student.com", password: "123456", admin: false)
+student9 = User.create(first_name: Faker::Name.first_name, last_name: "Nine", email: "student9@student.com", password: "123456", admin: false)
+student10 = User.create(first_name: Faker::Name.first_name, last_name: "Ten", email: "student10@student.com", password: "123456", admin: false)
