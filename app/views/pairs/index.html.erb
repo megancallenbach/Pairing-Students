@@ -1,29 +1,32 @@
 <% if current_user.admin? %>
 
-<h1>Today's Pairs are:</h1>
+  <h1>Today's Pairs are:</h1>
+  <% if @pairs.length >= 1%>
+        <% @pairs.each do |pair| %>
+          <% if pair.date == Date.today %>
+           <div class="col-sm-6">
+           <h2><%= pair.date %> : <%= pair.student1 %> + <%= pair.student2 %> </h2>
+            <hr />
+            </div>
+          <% end %>
+        <% end %>
 
-  <% @pairs.each do |pair| %>
-    <% if pair.date == Date.today %>
-     <div class="col-sm-6">
-     <h2><%= pair.date %> : <%= pair.student1 %> + <%= pair.student2 %> </h2>
-      <hr />
-      </div>
-    <% end %>
-  <% end %>
+      <h1> Previous Pairs: </h1>
+      <% @pairs.each do |pair| %>
+        <% if pair.date < Date.today %>
+          <h2><%= pair.date %>: <%= pair.student1 %> + <%= pair.student2 %> </h2>
+          <hr/>
+        <% end %>
+      <% end %>
+    <% else %>
+    <h2>No matches have been created today!</h2>
+    <%end%>
 
-<h1> Previous Pairs: </h1>
-<% @pairs.each do |pair| %>
-  <% if pair.date < Date.today %>
-    <h2><%= pair.date %>: <%= pair.student1 %> + <%= pair.student2 %> </h2>
-    <hr/>
-  <% end %>
-<% end %>
-
-<%= link_to "Delete All Matches", pairs_path, method: :delete, class: "btn btn-large btn-danger" %>
-<%= link_to "Generate New Matches", pairs_path, method: :create, class: "btn btn-large btn-primary" %>
+  <%= link_to "Delete All Matches", pairs_path, method: :delete, class: "btn btn-large btn-danger" %>
+  <%= link_to "Generate New Matches", pairs_path, method: :create, class: "btn btn-large btn-primary" %>
 
 <% else %>
 
-<h1>You are not authorized to view this page.</h1>
+  <h1>You are not authorized to view this page.</h1>
 
 <% end %>

@@ -14,7 +14,7 @@ class PairsController < ApplicationController
   def create
     @pairs = Pair.all
     # @pairs.each {|pair| delete pair}
-    Pair.weekly_pairs
+    Pair.create_pairs
     redirect_to pairs_path, notice: "New Pairs Created!"
   end
 
