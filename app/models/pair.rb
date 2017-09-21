@@ -6,12 +6,13 @@ class Pair < ApplicationRecord
   @users.each do |user|
     @@lonely_students.push(user.full_name)
   end
-  @@pairs_today = []
 
   def self.weekly_pairs
     i = 0
     while i < 6
+      puts "**** #{@@lonely_students}"
       day = Date.today - i
+      puts "**** #{day}"
       create_pairs(day)
       i += 1
     end
@@ -23,13 +24,14 @@ class Pair < ApplicationRecord
     puts "Lonely: #{@@lonely_students}"
     special_student = @@lonely_students.shift
     puts "Special student #{special_student}"
-    @@lonely_students.rotate!
+    @@lonely_students.rotate!(-1)
     puts "Lonely: #{@@lonely_students}"
     @@lonely_students.unshift(special_student)
+    @@pairs_today = []
     while i < (@@lonely_students.length/2)
       @new_pair = Pair.create!
       student1 = @@lonely_students[i]
-      student2 = @@lonely_students[i + (@@lonely_students.length / 2)]
+      student2 = @@lonely_students[(@@lonely_students.length - 1) - i]
       @new_pair.update(student1: student1)
       @new_pair.update(student2: student2)
       @new_pair.update(date: day)
