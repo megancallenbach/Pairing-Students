@@ -13,7 +13,7 @@ Pair.destroy_all
 
 admin1 = User.create(first_name: "Mimi", last_name: Faker::Name.last_name, email: "mimi@admin.com", password: "123456", admin: true)
 admin2 = User.create(first_name: "Megan", last_name: Faker::Name.last_name, email: "megan@admin.com", password: "123456", admin: true)
-pair1 = Pair.create!(student1: admin1, student2: admin2, date: (Date.today - 3))
+
 student1 = User.create!(first_name: Faker::Name.first_name, last_name: "One", email: "student1@student.com", password: "123456", admin: false)
 student2 = User.create!(first_name: Faker::Name.first_name, last_name: "Two", email: "student2@student.com", password: "123456", admin: false)
 student3 = User.create(first_name: Faker::Name.first_name, last_name: "Three", email: "student3@student.com", password: "123456", admin: false)
@@ -24,3 +24,8 @@ student7 = User.create(first_name: Faker::Name.first_name, last_name: "Seven", e
 student8 = User.create(first_name: Faker::Name.first_name, last_name: "Eight", email: "student8@student.com", password: "123456", admin: false)
 student9 = User.create(first_name: Faker::Name.first_name, last_name: "Nine", email: "student9@student.com", password: "123456", admin: false)
 student10 = User.create(first_name: Faker::Name.first_name, last_name: "Ten", email: "student10@student.com", password: "123456", admin: false)
+
+
+pair1 = Pair.create!(student1: student1.first_name, student2: student2.first_name, date: (Date.today - 1))
+pair2 = Pair.create!(student1: student1.first_name, student2: student2.first_name, date: (Date.today - 3))
+pair3 = Pair.create!(student1: student1.first_name, student2: student2.first_name, date: (Date.today - 7))
