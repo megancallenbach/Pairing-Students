@@ -1,14 +1,30 @@
+<% if current_user.admin? %>
+
 <h1>Today's Pairs are:</h1>
-<div class="wrapper">
 
 
-<% @users.where(admin: false).each do |user| %>
-<div class="col-sm-6">
-<p> Student's Name: <%= user.full_name %></p>
-<p> Pair Number: <%= user.pair_id %></p>
-<hr />
-</div>
+  <% @pairs.each do |pair| %>
+    <% if pair.date == Date.today %>
+     <div class="col-sm-6">
+     <h2><%= pair.date %> : <%= pair.student1 %> + <%= pair.student2 %> </h2>
+      <hr />
+      </div>
+    <% end %>
+  <% end %>
+
+<h1> Previous Pairs: </h1>
+<% @pairs.each do |pair| %>
+  <% if pair.date < Date.today %>
+    <h2><%= pair.date %>: <%= pair.student1 %> + <%= pair.student2 %> </h2>
+    <hr/>
+  <% end %>
+<% end %>
+
+<%= link_to "Delete All Matches", pairs_path, method: :delete, class: "btn btn-large btn-danger" %>
+<%= link_to "Generate New Matches", pairs_path, method: :create, class: "btn btn-large btn-primary" %>
+
+<% else %>
+
+<h1>You are not authorized to view this page.</h1>
 
 <% end %>
-</div>
-<%= link_to "Generate New Matches", pairs_path, method: :create, class: "btn btn-large btn-primary" %>

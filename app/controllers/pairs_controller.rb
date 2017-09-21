@@ -1,5 +1,4 @@
 class PairsController < ApplicationController
-  before_action :authorize_admin, only: :index
 
   def index
     @pairs = Pair.all
@@ -14,8 +13,16 @@ class PairsController < ApplicationController
 
   def create
     @pairs = Pair.all
-    Pair.create_pairs
+    Pair.weekly_pairs
     redirect_to pairs_path, notice: "New Pairs Created!"
   end
+
+  def destroy
+    # @pairs = Pair.all
+    Pair.find_each(&:destroy)
+    redirect_to pairs_path, notice: "All Pairs Deleted!"
+  end
+
+# Post.select('DISTINCT created_at').order('created_at DESC').limit(5).pluck(:created_at)
 
 end
