@@ -7,6 +7,19 @@ class Pair < ApplicationRecord
     @@lonely_students.push(user.full_name)
   end
 
+<<<<<<< HEAD
+=======
+  def self.weekly_pairs
+    i = 0
+    while i < 6
+      puts "**** #{@@lonely_students}"
+      day = Date.today - i
+      puts "**** #{day}"
+      create_pairs(day)
+      i += 1
+    end
+  end
+>>>>>>> e5aeafa42d119d527d56186084169bb37e1e697b
 
    def self.weekly_pairs
      i = 0
@@ -24,16 +37,28 @@ class Pair < ApplicationRecord
 
     #roundrobin array each time function is called
     special_student = @@lonely_students.shift
+<<<<<<< HEAD
     @@lonely_students.rotate!
     @@lonely_students.unshift(special_student)
 
+=======
+    puts "Special student #{special_student}"
+    @@lonely_students.rotate!(-1)
+    puts "Lonely: #{@@lonely_students}"
+    @@lonely_students.unshift(special_student)
+    @@pairs_today = []
+>>>>>>> e5aeafa42d119d527d56186084169bb37e1e697b
     while i < (@@lonely_students.length/2)
       #pick two students from array
       student1 = @@lonely_students[i]
+<<<<<<< HEAD
       student2 = @@lonely_students[(@@lonely_students.length -1) -i]
 
       #add students pair attribute
       @new_pair = Pair.create!
+=======
+      student2 = @@lonely_students[(@@lonely_students.length - 1) - i]
+>>>>>>> e5aeafa42d119d527d56186084169bb37e1e697b
       @new_pair.update(student1: student1)
       @new_pair.update(student2: student2)
       @new_pair.update(date: day)
