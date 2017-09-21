@@ -7,6 +7,7 @@ class Pair < ApplicationRecord
     @@lonely_students.push(user.full_name)
   end
 
+
   # def self.weekly_pairs
   #   i = 0
   #   while i < 6
@@ -21,6 +22,10 @@ class Pair < ApplicationRecord
 
   def self.create_pairs
     i = 0
+    if @@lonely_students.length % 2 != 0
+      $lonely = @@lonely_students.pop
+      @@lonely_students.insert((@@lonely_students.length/2 -1), $lonely)
+    end
     puts "Lonely: #{@@lonely_students}"
     special_student = @@lonely_students.shift
     puts "Special student #{special_student}"
@@ -28,7 +33,8 @@ class Pair < ApplicationRecord
     puts "Lonely: #{@@lonely_students}"
     @@lonely_students.unshift(special_student)
     @@pairs_today = []
-    while i < (@@lonely_students.length/2)
+
+    while i < ((@@lonely_students.length) /2)
       @new_pair = Pair.create!
       student1 = @@lonely_students[i]
       student2 = @@lonely_students[(@@lonely_students.length - 1) - i]

@@ -1,28 +1,36 @@
 <% if current_user.admin? %>
-
+<div class="row">
   <h1>Today's Pairs are:</h1>
   <% if @pairs.length >= 1%>
         <% Pair.order(id: :desc).limit(@users.where(admin: false).length/2).each do |pair| %>
           <% if pair.date == Date.today %>
            <div class="col-sm-6">
-           <h2><%= pair.date %> : <%= pair.student1 %> + <%= pair.student2 %> </h2>
+           <h5><%= pair.date %> : <%= pair.student1 %> + <%= pair.student2 %> </h5>
             <hr />
             </div>
           <% end %>
         <% end %>
+        <div class="col-sm=6">
+          <h5> Free bird: <%= $lonely %> </h5>
+        </div>
+</div>
 
+<%= link_to "Yesterday", pairs_path(date: Date.today-1), class: "btn btn-large btn-default" %>
+
+<div class="row">
       <h1> Previous Pairs: </h1>
       <% @pairs.each do |pair| %>
         <% if pair.date < Date.today %>
-          <h2><%= pair.date %>: <%= pair.student1 %> + <%= pair.student2 %> </h2>
+          <div class="col-sm-6">
+          <h5><%= pair.date %>: <%= pair.student1 %> + <%= pair.student2 %> </h5>
           <hr/>
+        </div>
         <% end %>
       <% end %>
     <% else %>
     <h2>No matches have been created today!</h2>
     <%end%>
-
-  <%= link_to "Delete All Matches", pairs_path, method: :delete, class: "btn btn-large btn-danger" %>
+</div>
   <%= link_to "Generate New Matches", pairs_path, method: :create, class: "btn btn-large btn-primary" %>
 
 <% else %>

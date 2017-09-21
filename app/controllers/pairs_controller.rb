@@ -1,20 +1,20 @@
 class PairsController < ApplicationController
 
   def index
-    @pairs = Pair.all
+    @pairs = Pair.where(date: params[:date])
     @pair = Pair.first
     @users = User.all
   end
 
   def show
+    @pairs = Pair.where(student1: current_user.full_name).find_each
     @pair = Pair.find(current_user.pair_id)
     @match = @pair.users
   end
 
   def create
     @pairs = Pair.all
-    # @pairs.each {|pair| delete pair}
-    Pair.create_pairs
+    Pair.create_pairs(params[:date])
     redirect_to pairs_path, notice: "New Pairs Created!"
   end
 
