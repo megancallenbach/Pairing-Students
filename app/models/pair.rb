@@ -8,9 +8,18 @@ class Pair < ApplicationRecord
   end
   @@pairs_today = []
 
-  def self.create_pairs
+  def self.weekly_pairs
     i = 0
+    while i < 6
+      day = Date.today - i
+      create_pairs(day)
+      i += 1
+    end
+  end
 
+
+  def self.create_pairs(day)
+    i = 0
     puts "Lonely: #{@@lonely_students}"
     special_student = @@lonely_students.shift
     puts "Special student #{special_student}"
@@ -21,6 +30,9 @@ class Pair < ApplicationRecord
       @new_pair = Pair.create!
       student1 = @@lonely_students[i]
       student2 = @@lonely_students[i + (@@lonely_students.length / 2)]
+      @new_pair.update(student1: student1)
+      @new_pair.update(student2: student2)
+      @new_pair.update(date: day)
       @pair = []
       puts "Lonely: #{@@lonely_students}"
       @pair << student1
