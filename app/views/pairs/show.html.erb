@@ -1,8 +1,17 @@
-<h1>Here is your pair for today:</h1>
-
+<h1><%= current_user.full_name %> you are matched with: </h1>
+<% if current_user.full_name == $lonely %>
+<h3>Nobody! Feel free to join another group </h3>
+<% else %>
 <% @match.each do |person| %>
-<%= person.full_name %>
-<hr />
+  <% if person.full_name != current_user.full_name %>
+  <h3>  <%= person.full_name %>! </h3>
+  <% end %>
 <% end %>
-
+<% end %>
+</h1>
+<hr />
 <h2>These were your previous pairs:</h2>
+<% @pairs.each do |pair| %>
+<%= pair.student1 %>
+<%= pair.student2 %>
+<%end %>

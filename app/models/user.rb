@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :pair, optional: true
   has_one :profile
 
+public
   def full_name
     "#{first_name} #{last_name}"
   end
