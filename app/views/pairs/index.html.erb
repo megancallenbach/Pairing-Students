@@ -2,7 +2,7 @@
 
   <h1>Today's Pairs are:</h1>
   <% if @pairs.length >= 1%>
-        <% @pairs.each do |pair| %>
+        <% Pair.order(id: :desc).limit(@users.where(admin: false).length/2).each do |pair| %>
           <% if pair.date == Date.today %>
            <div class="col-sm-6">
            <h2><%= pair.date %> : <%= pair.student1 %> + <%= pair.student2 %> </h2>
