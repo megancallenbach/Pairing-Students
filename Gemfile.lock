@@ -226,7 +226,7 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.4)
-  rspec-rails (~> 3.5, >= 3.5.2)
+  rspec-rails
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

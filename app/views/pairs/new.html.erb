@@ -1,4 +1,8 @@
-<%= @pair.create_pairs %>
+<ul id = "newpairs">
+<li class = "pair"> <%= @pair.create_pairs %> </li>
+</ul>
+
+
 <%# @users.where(admin: false).each do |user| %>
 
 <p> Username: <%#= user.full_name %></p>
@@ -6,3 +10,11 @@
 <%# end %>
 
 <%#= link_to "Back", pairs_path, class: "btn btn-large btn-primary" %>
+<script>
+
+alert("hello")
+setInterval(function() { alert("foo"); },, 5000);
+
+setInterval(function() { location.reload(); }, 5000);
+
+</script>
