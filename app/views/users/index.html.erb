@@ -1,7 +1,7 @@
 <h1>User Index</h1>
 
 <% @users.each do |user| %>
-  <% if user.profile.nil? %>
+  <% if user.full_name.nil? %>
     <p><%= link_to user.email, user_path(user) %></p>
     <p><%= user.lonely_students %></p>
   <% else %>
