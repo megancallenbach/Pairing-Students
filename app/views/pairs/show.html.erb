@@ -12,6 +12,7 @@
 <hr />
 <h2>These were your previous pairs:</h2>
 <% @pairs.each do |pair| %>
-<%= pair.student1 %>
-<%= pair.student2 %>
+<% if pair.date < Date.today %>
+<p><%= pair.date %> : <%= pair.student1 %> + <%= pair.student2 %>
+<% end %>
 <%end %>
