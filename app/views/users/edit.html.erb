@@ -1,10 +1,6 @@
 <h1>Change Admin Role</h1>
 
-<% if @user.profile.nil? %>
- <h2><%= @user.email %></h2>
-<% else %>
   <h2><%= @user.full_name %></h2>
-<% end %>
 
 <%= form_for @user do |f| %>
   <div class="form-group">

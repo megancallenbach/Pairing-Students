@@ -1,8 +1,5 @@
-<% if @user.profile.nil? %>
-  <h1><%= @user.email %></h1>
-<% else %>
+
   <h1><%= @user.full_name %></h1>
-<% end %>
 
 <% if @user.admin? %>
 <h2>This user is an admin.</h2>
