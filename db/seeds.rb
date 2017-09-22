@@ -28,4 +28,3 @@ student9 = User.create(first_name: Faker::Name.first_name, last_name: "Nine", em
 pair1 = Pair.create!(student1: student1.full_name, student2: student2.full_name, date: (Date.today - 1))
 pair2 = Pair.create!(student1: student3.full_name, student2: student4.full_name, date: (Date.today - 3))
 pair3 = Pair.create!(student1: student5.full_name, student2: student6.full_name, date: (Date.today - 7))
-pair4 = Pair.create!(student1: student9.full_name, student2: nil, date: Date.today)
