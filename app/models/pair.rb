@@ -32,7 +32,7 @@ class Pair < ApplicationRecord
       student1 = @@lonely_students[i]
       student2 = @@lonely_students[(@@lonely_students.length - 1) - i]
 
-      # create new instance of pair
+      # create new_pair which is instance of pair
       @new_pair = Pair.create!
       @new_pair.update(student1: student1)
       @new_pair.update(student2: student2)
