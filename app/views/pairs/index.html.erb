@@ -13,12 +13,13 @@
           <% end %>
         <% end %>
         <div class="col-sm=6">
-          <% if @pairs.length % 2 != 0 %>
+          <% if @users.where(admin: false).length % 2 != 0 %>
           <h5> Free bird: <%= $lonely %> </h5>
           <% end %>
         </div>
-</div>
   <%end%>
+</div>
+
   <%= link_to "Generate New Matches", pairs_path, method: :post, class: "btn btn-large btn-primary" %>
 
 <div class="row">

@@ -1,22 +1,22 @@
 class Pair < ApplicationRecord
   has_many :users
 
-
+  #create lonely students array
+  @@lonely_students = []
+  @users = User.where(admin: false)
+  @users.each do |user|
+    @@lonely_students.push(user.full_name)
+  end
+  @@pairs_today = []
 
   def self.create_pairs
-    @@lonely_students = []
-    @users = User.where(admin: false)
 
-    #create lonely students array
-    @users.each do |user|
-      @@lonely_students.push(user.full_name)
-    end
     i = 0
-    @@pairs_today = []
 
     #take care of odd number of students
     if @@lonely_students.length % 2 != 0
       $lonely = @@lonely_students.pop
+      puts $lonely
       @@lonely_students.insert((@@lonely_students.length/2 -1), $lonely)
     end
 
