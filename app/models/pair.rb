@@ -1,13 +1,13 @@
 class Pair < ApplicationRecord
   has_many :users
 
-  #create lonely students array
 
 
   def self.create_pairs
     @@lonely_students = []
     @users = User.where(admin: false)
 
+    #create lonely students array
     @users.each do |user|
       @@lonely_students.push(user.full_name)
     end
@@ -40,12 +40,12 @@ class Pair < ApplicationRecord
 
       # Pair array which will show in views
       @pair = []
-      puts "Lonely: #{@@lonely_students}"
       @pair << student1
       @pair << student2
       @@pairs_today << @pair
 
       i += 1
+
       # Connect student1 to user1
       first_name1 = student1.split(' ')[0]
       last_name1 = student1.split(' ')[1]
@@ -58,9 +58,7 @@ class Pair < ApplicationRecord
       student_2 = User.find_by(first_name: first_name2, last_name: last_name2)
       student_2.update(pair_id: @new_pair.id)
 
-      puts "Pairs today: #{@@pairs_today}"
     end
     return @@pairs_today
   end
-
 end

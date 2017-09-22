@@ -56,18 +56,25 @@ end
 describe "Student interested in own pair" do
   before {login_as student1}
 
-  let!(:student1) { create :user, email: "student1@user.com", first_name: "AAA", last_name: "Pietje", admin: false }
-  let!(:student2) { create :user, email: "student2@user.com", first_name: "BBB", last_name: "Pietje", admin: false }
-  let!(:student3) { create :user, email: "student3@user.com", first_name: "CCC", last_name: "Pietje", admin: false }
+  let!(:student1) { create :user, email: "student1@user.com", first_name: "AAA", last_name: "Pietje", admin: false, pair: pair1 }
+  let!(:student2) { create :user, email: "student2@user.com", first_name: "BBB", last_name: "Pietje", admin: false, pair: pair1 }
+  let!(:student3) { create :user, email: "student3@user.com", first_name: "CCC", last_name: "Pietje", admin: false, pair: pair2 }
+  let!(:student4) { create :user, email: "student4@user.com", first_name: "DDD", last_name: "Pietje", admin: false, pair: pair2 }
 
-  let!(:pair) {create :pair, student1: "AAA Pietje", student2: "BBB Pietje"}
+  let!(:pair1) {create :pair, student1: "AAA Pietje", student2: "BBB Pietje"}
+  let!(:pair2) {create :pair, student1: "CCC Pietje", student2: "DDD Pietje"}
 
-  it "only sees own pair" do
-   pending "update show page"
-   visit pair_path(pair)
+  it "sees own pair" do
+   visit pair_path(pair1)
 
    expect(page).to have_text("AAA Pietje")
    expect(page).to have_text("BBB Pietje")
-   expect(page).not_to have_text("CCC Pietje")
- end
+  end
+
+  it "does not see unrelated pairs" do
+    visit pair_path(pair1)
+
+    expect(page).not_to have_text("CCC Pietje")
+    expect(page).not_to have_text("DDD Pietje")
+  end
 end
