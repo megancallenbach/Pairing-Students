@@ -11,6 +11,11 @@ class Pair < ApplicationRecord
     i = 0
     @@pairs_today = []
 
+    if @@lonely_students.length % 2 != 0
+      $lonely = @@lonely_students.pop
+      @@lonely_students.insert((@@lonely_students.length/2 -1), $lonely)
+    end
+
     special_student = @@lonely_students.shift
     @@lonely_students.rotate!(-1)
     @@lonely_students.unshift(special_student)
