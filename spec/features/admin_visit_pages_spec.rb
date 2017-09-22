@@ -31,7 +31,6 @@ describe "Admin viewing the index page" do
   let!(:student3) { create :user, email: "student3@user.com", first_name: "CCC", last_name: "Pietje", admin: false }
   let!(:student4) { create :user, email: "student4@user.com", first_name: "DDD", last_name: "Pietje", admin: false }
 
-
   it "sees a list of all previous pairs" do
     visit pairs_path
 
@@ -43,19 +42,6 @@ describe "Admin viewing the index page" do
     visit pairs_path
 
     expect(page).to have_text("No matches have been created today!")
-  end
-
-
-  it "can create new pairs" do
-    visit pairs_path
-
-    click_link "Generate New Matches"
-
-    expect(page).to have_text("AAA Pietje")
-    expect(page).to have_text("BBB Pietje")
-    expect(page).to have_text("CCC Pietje")
-    expect(page).to have_text("DDD Pietje")
-
   end
 end
 
