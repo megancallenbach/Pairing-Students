@@ -25,7 +25,7 @@ describe "Admin viewing the index page" do
   let(:admin) { create :user, email: "current@user.com", first_name: "Jantje", last_name: "Pietje", admin: true }
   let!(:pair1) { create :pair, student1: "One", student2: "Two", date: (Date.today-2)}
   let!(:pair2) { create :pair, student1: "three", student2: "four", date: (Date.today-3)}
-  let!
+  let!(:pair3) { create :pair, student1: "three", student2: "four", date: (Date.today-3)}
 
   it "sees a list of all previous pairs" do
     visit pairs_path
@@ -37,4 +37,10 @@ describe "Admin viewing the index page" do
 
   end
 
+  it "sees no matches have been created today" do
+    pending "push first"
+    visit pairs_path
+
+    expect(page).to have_text("No matches have been created today!")
+  end
 end
