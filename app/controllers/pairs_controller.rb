@@ -7,7 +7,7 @@ class PairsController < ApplicationController
   end
 
   def show
-    @pairs = Pair.where(student1: current_user.full_name).find_each
+    @pairs = Pair.where(student1: current_user.full_name).or(Pair.where(student2: current_user.full_name))
     @pair = Pair.find(current_user.pair_id)
     @match = @pair.users
   end

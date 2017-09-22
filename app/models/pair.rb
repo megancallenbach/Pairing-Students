@@ -2,14 +2,15 @@ class Pair < ApplicationRecord
   has_many :users
 
   #create lonely students array
-  @@lonely_students = []
-  @users = User.where(admin: false)
-  
-  @users.each do |user|
-    @@lonely_students.push(user.full_name)
-  end
+
 
   def self.create_pairs
+    @@lonely_students = []
+    @users = User.where(admin: false)
+
+    @users.each do |user|
+      @@lonely_students.push(user.full_name)
+    end
     i = 0
     @@pairs_today = []
 
