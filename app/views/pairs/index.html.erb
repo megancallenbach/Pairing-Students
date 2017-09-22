@@ -17,11 +17,11 @@
           <h5> Free bird: <%= $lonely %> </h5>
           <% end %>
         </div>
-
 </div>
   <%= link_to "Generate New Matches", pairs_path, method: :create, class: "btn btn-large btn-primary" %>
 
 <div class="row">
+  
   <h3> Previous Pairs: </h3>
   <% @pairs.each do |pair| %>
     <% if pair.date < Date.today %>
@@ -31,6 +31,7 @@
     </div>
     <% end %>
   <% end %>
+
 </div>
 
 <%end%>
