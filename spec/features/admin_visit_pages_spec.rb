@@ -38,9 +38,29 @@ describe "Admin viewing the index page" do
   end
 
   it "sees no matches have been created today" do
-    pending "push first"
+    pending "wait for update view"
     visit pairs_path
 
     expect(page).to have_text("No matches have been created today!")
+  end
+end
+
+
+describe "Admin interested in users" do
+  before {login_as admin}
+
+  let!(:admin) { create :user, email: "current@user.com", first_name: "Jantje", last_name: "Pietje", admin: true }
+  let!(:student1) { create :user, email: "student1@user.com", first_name: "AAA", last_name: "Pietje", admin: false }
+  let!(:student2) { create :user, email: "student2@user.com", first_name: "BBB", last_name: "Pietje", admin: false }
+  let!(:student3) { create :user, email: "student3@user.com", first_name: "CCC", last_name: "Pietje", admin: false }
+
+  it "sees a list of all users" do
+    visit users_path
+
+    expect(page).to have_text("Jantje Pietje")
+    expect(page).to have_text("AAA Pietje")
+    expect(page).to have_text("BBB Pietje")
+    expect(page).to have_text("CCC Pietje")
+
   end
 end

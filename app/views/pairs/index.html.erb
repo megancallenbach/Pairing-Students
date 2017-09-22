@@ -13,22 +13,22 @@
         <div class="col-sm=6">
           <h5> Free bird: <%= $lonely %> </h5>
         </div>
-  <% else %>
-    <h2>No matches have been created today!</h2>
-  <%end%>
 </div>
 
 
 <div class="row">
-  <h1> Previous Pairs: </h1>
-  <% @pairs.each do |pair| %>
-    <% if pair.date < Date.today %>
-      <div class="col-sm-6">
-      <h5><%= pair.date %>: <%= pair.student1 %> + <%= pair.student2 %> </h5>
-      <hr/>
-    </div>
-    <% end %>
-  <% end %>
+      <h1> Previous Pairs: </h1>
+      <% @pairs.each do |pair| %>
+        <% if pair.date < Date.today %>
+          <div class="col-sm-6">
+          <h5><%= pair.date %>: <%= pair.student1 %> + <%= pair.student2 %> </h5>
+          <hr/>
+        </div>
+        <% end %>
+      <% end %>
+    <% else %>
+    <h2>No matches have been created today!</h2>
+    <%end%>
 </div>
   <%= link_to "Generate New Matches", pairs_path, method: :create, class: "btn btn-large btn-primary" %>
 
